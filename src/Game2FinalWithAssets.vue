@@ -198,8 +198,10 @@ export default {
           if (
             mybottom < othertop ||
             mytop > otherbottom ||
-            myright - 40 < otherleft ||
-            myleft + 40 > otherright
+            myright < otherleft ||
+            myright > otherright ||
+            myleft > otherright ||
+            myleft + 20 < otherleft
           ) {
             crash = false;
           }
