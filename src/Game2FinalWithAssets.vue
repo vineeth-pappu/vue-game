@@ -750,18 +750,24 @@ export default {
 
     // Reset Game
     resetGame() {
-      console.log("Reset game");
+      // console.log("Reset game");
       this.myGamePiece.x = 60;
-      this.myBasePiece2.x = this.getRandomArbitrary(100, 360);
-      this.myBasePiece2.width = this.getRandomArbitrary(40, 80);
-      this.myStickPiece.x = 100;
-      this.myStickPiece.y = 530;
+      this.myBasePiece2.x =
+        this.myBasePiece.x +
+        this.myBasePiece.width +
+        this.getRandomArbitrary(100, 560);
+      this.myBasePiece2.width = this.getRandomArbitrary(
+        window.innerWidth / 10,
+        window.innerWidth / 5
+      );
+      this.myStickPiece.x = window.innerWidth / 10 + 60;
+      this.myStickPiece.y = 60;
       this.myStickPiece.width = 10;
       this.myStickPiece.height = 10;
     },
 
     getRandomArbitrary(min, max) {
-      return Math.random() * (max - min) + min;
+      return Math.floor(Math.random() * (max - min + 1) + min);
     },
   },
 
