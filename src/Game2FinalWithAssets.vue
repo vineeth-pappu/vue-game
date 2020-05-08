@@ -210,17 +210,31 @@ export default {
         move: () => {
           if (
             this.myGamePiece.x <=
-            this.myStickPiece.width + this.myGamePiece.width * 2.1
+            this.myStickPiece.width +
+              this.myGamePiece.width +
+              this.myGamePiece.width / 2
           ) {
-            console.log(
-              "moving myGamePiece",
-              this.myGamePiece.x,
-              this.myStickPiece.width
-            );
-            this.myGamePiece.x += 1;
+            // console.log(
+            //   "moving myGamePiece",
+            //   this.myGamePiece.x,
+            //   this.myStickPiece.width,
+            //   parseInt(
+            //     this.myStickPiece.width +
+            //       this.myGamePiece.width +
+            //       this.myGamePiece.width / 2
+            //   )
+            // );
+
+            this.myGamePiece.x += 5;
+
             if (
-              this.myGamePiece.x ==
-              this.myStickPiece.width + this.myGamePiece.width * 2.1
+              // this.myGamePiece.x ==
+              this.myGamePiece.x >=
+              parseInt(
+                this.myStickPiece.width +
+                  this.myGamePiece.width +
+                  this.myGamePiece.width / 2
+              )
             ) {
               this.myGamePiece.moved = true;
               this.myGamePiece.needMove = false;
