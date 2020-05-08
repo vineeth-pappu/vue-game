@@ -714,7 +714,7 @@ export default {
         this.myGamePiece.moved == false &&
         this.myGamePiece.needMove == true
       ) {
-        console.log("this.myGamePiece cur obj ", this.myGamePiece);
+        // console.log("this.myGamePiece cur obj ", this.myGamePiece);
         this.myGamePiece.move();
         // this.myGameArea.stop();
       }
