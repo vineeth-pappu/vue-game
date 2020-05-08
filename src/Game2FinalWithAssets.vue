@@ -199,7 +199,7 @@ export default {
             mybottom < othertop ||
             mytop > otherbottom ||
             myright < otherleft ||
-            myright > otherright ||
+            myright - 20 > otherright ||
             myleft > otherright ||
             myleft + 20 < otherleft
           ) {
