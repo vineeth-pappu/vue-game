@@ -687,12 +687,12 @@ export default {
     // Update Game Area
 
     updateGameArea() {
-      console.log("updateGameArea running");
+      // console.log("updateGameArea running");
       this.myGameArea.clear();
 
       if (this.myGameArea.keys && this.myGameArea.keys[39]) {
         if (this.gameControls == true) {
-          this.myStickPiece.height += 2;
+          this.myStickPiece.height += 5;
           if (this.myStickPiece.width != 10) this.myStickPiece.width = 10;
         }
       }
