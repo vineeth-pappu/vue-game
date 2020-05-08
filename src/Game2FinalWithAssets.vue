@@ -733,14 +733,16 @@ export default {
     },
 
     // Add key to coltroll
-    addKeyPress() {
+    addKeyPress(e) {
+      e.preventDefault();
       console.log("key pressssssd");
 
       this.myGameArea.keys = this.myGameArea.keys || [];
       this.myGameArea.keys[39] = "keydown"; //(e.type == "keydown");
     },
 
-    keyReleased() {
+    keyReleased(e) {
+      e.preventDefault();
       this.myGameArea.keys[39] = "keydown"; //(e.type == "keydown");
       this.myGameArea.keyReleased = true;
       this.myGameArea.keys = [];
