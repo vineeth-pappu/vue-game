@@ -94,8 +94,8 @@ export default {
 
       myGamePiece: {
         type: "type",
-        width: 50,
-        height: 50,
+        width: window.innerWidth / 10,
+        height: window.innerHeight / 15,
         x: 60,
         y: 60,
         speedX: 0,
