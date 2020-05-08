@@ -516,7 +516,7 @@ export default {
         type: "stick",
         width: 10,
         height: 10,
-        x: 105, //this.myGamePiece.width + this.myGamePiece.x,
+        x: window.innerWidth / 10 + 60, //this.myGamePiece.width + this.myGamePiece.x,
         y: 60,
         speedX: 0,
         speedY: 0,
