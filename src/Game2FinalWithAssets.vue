@@ -398,7 +398,7 @@ export default {
 
       myBasePiece2: {
         type: "base",
-        width: 60,
+        width: window.innerWidth / 10 + 100,
         height: 50,
         x: 355,
         y: 200,
