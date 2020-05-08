@@ -205,6 +205,8 @@ export default {
           ) {
             crash = false;
           }
+          console.log("crashhhhh", crash);
+
           return crash;
         },
         move: () => {
