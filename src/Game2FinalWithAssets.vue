@@ -1,24 +1,16 @@
 <template>
-  <div id="app" @mousedown="addKeyPress" @mouseup="keyReleased">
-    <button @mousedown="addKeyPress" @mouseup="keyReleased">Press Me</button>
-    <p>
-      Or, click and hold anywhere to build the bridge and move the car from box
-      to box
-    </p>
+  <!-- <div id="app" @mousedown="addKeyPress" @mouseup="keyReleased"> -->
+  <v-touch @press="addKeyPress" @pressup="keyReleased">
+    <div id="app">
+      <!-- <button @mousedown="addKeyPress" @mouseup="keyReleased">Press Me</button> -->
 
-    <img
-      v-show="false"
-      ref="stickImg"
-      src="./assets/yellow-circle.png"
-      alt=""
-    />
+      <img v-show="false" ref="stickImg" src="./assets/yellow-circle.png" alt />
 
-    <div class="score_wrapper">
-      {{ score }}
+      <div class="score_wrapper">{{ score }}</div>
+
+      <div id="game_window"></div>
     </div>
-
-    <div id="game_window"></div>
-  </div>
+  </v-touch>
 </template>
 
 <script>
@@ -48,8 +40,10 @@ export default {
           console.log("this of myGameArea start", this);
           console.log("this of that Global", that);
 
-          this.myGameArea.canvas.width = 480;
-          this.myGameArea.canvas.height = 600;
+          // this.myGameArea.canvas.width = 480;
+          // this.myGameArea.canvas.height = 600;
+          this.myGameArea.canvas.width = window.innerWidth;
+          this.myGameArea.canvas.height = window.innerHeight;
           this.myGameArea.context = this.myGameArea.canvas.getContext("2d");
           // document.body.insertBefore(this.canvas, document.body.childNodes[0]);
 
@@ -552,7 +546,9 @@ export default {
                 );
               };
               // this.stickImageObj.src = 'http://54.153.23.209/hive_vue/hg/Gold_circle.svg.png';
-              this.stickImageObj.src = "./assets/yellow-circle.png";
+              // this.stickImageObj.src = "./assets/yellow-circle.png";
+              this.stickImageObj.src =
+                "https://clipartart.com/images/yellow-circle-png-clipart-1.jpg";
               this.renderedStickPiece = true;
             }
             ctx.drawImage(
@@ -650,6 +646,10 @@ export default {
   },
 
   methods: {
+    testPress(e) {
+      console.log("press", e);
+    },
+
     startGame() {
       // myGamePiece = new component(30, 30, "red", 80, 60);
       // stickPiece = new component(10, 20, "yellow", myGamePiece.width + myGamePiece.x, 60);
@@ -667,11 +667,6 @@ export default {
 
       this.myGameArea.start();
     },
-
-    // Move My base piece 2 to default my base piece 1
-    // moveMyBasePiece2ToDefaultMyBasePiece1() {
-
-    // },
 
     // Update Game Area
 
@@ -699,55 +694,6 @@ export default {
         }
       }
 
-      /* if (this.moveMyBasePiece2ToDefaultMyBasePiece1 == true)
-            {
-
-                    // if(this.myBasePiece2.y == this.myGamePiece.y) {
-                    if(this.myBasePiece2.x == this.myBasePiece.x-1) {
-                        this.myBasePiece2.x = 350
-                        this.moveMyBasePiece2ToNewPos = false
-                    }
-
-
-                // if (this.myBasePiece2.x >= this.myBasePiece.x) {
-                if (this.myBasePiece2.x >= 55) {
-                    this.myBasePiece2.x -= 1
-                }
-                // if (this.myBasePiece2.y >= this.myBasePiece.y) {
-                if (this.myBasePiece2.y >= 550) {
-                    this.myBasePiece2.y -= 1
-
-                }
-
-                if (this.myGamePiece.x >= this.myBasePiece.x + this.myGamePiece.width) {
-                    this.myGamePiece.x -= 1
-                }
-                if (this.myGamePiece.y >= this.myBasePiece.y) {
-                    this.myGamePiece.y -= 1
-                }
-
-                if (this.myStickPiece.x >= this.myBasePiece.x + this.myGamePiece.width*2) {
-                    this.myStickPiece.x -= 1
-                }
-                if (this.myStickPiece.y >= this.myBasePiece.y) {
-                    this.myStickPiece.y -= 1
-                }
-                // this.myBasePiece2.x = this.myBasePiece.x
-                // this.myBasePiece2.y = this.myBasePiece.y
-            }
-
-            if (this.moveMyBasePiece2ToNewPos == true)
-            {
-                console.log('Moving base piece 2 to new pos')
-                this.myBasePiece2.x = 355 //this.myGameArea.width - this.myBasePiece2.width
-                this.myBasePiece2.y = 550 //this.myGameArea.height - this.myBasePiece2.height
-                this.moveMyBasePiece2ToNewPos = false
-
-                // this.myGamePiece.moved = false
-                // this.myGamePiece.needMove = true
-
-            } */
-
       if (
         this.myGamePiece.moved == false &&
         this.myGamePiece.needMove == true
@@ -757,87 +703,6 @@ export default {
         // this.myGameArea.stop();
       }
 
-      /* if (this.stickPiece.crashWith(this.basePiece2) && this.myGamePiece.moved == false) {
-                console.log('hit base');
-                console.log('myGamePiece cur obj ', this.myGamePiece)
-                this.myGamePiece.move();
-                // this.myGameArea.stop();
-            }
-
-            if (this.myGamePiece.moved == false && this.myGamePiece.needMove == true) {
-                console.log('this.myGamePiece cur obj ', this.myGamePiece)
-                this.myGamePiece.move();
-                // this.myGameArea.stop();
-            }
-
-            if (this.myGameArea.keys && this.myGameArea.keys[39]) {
-                this.stickPiece.height += 2;
-                if(this.stickPiece.width != 10) this.stickPiece.width = 10;
-            }
-
-            if (this.myGameArea.keyReleased == true)
-            {
-                this.stickPiece.height += 1;
-                //this.stickPiece.rotate();
-                this.stickPiece.width = this.stickPiece.height;
-                this.stickPiece.height = 10;
-                this.myGameArea.keyReleased = false;
-
-                this.myGamePiece.needMove = true;
-            } */
-
-      // myGamePiece.newPos();
-      // myGamePiece.update();
-
-      // this.basePiece.newPos();
-      // this.basePiece.update();
-      // this.basePiece2.newPos();
-      // this.basePiece2.update();
-      // this.stickPiece.newPos();
-      // this.stickPiece.update();
-
-      /* var x, y;
-            for (i = 0; i < myObstacles.length; i += 1) {
-                if (myGamePiece.crashWith(myObstacles[i])) {
-                    this.myGameArea.stop();
-                    return;
-                }
-            }
-            // this.myGameArea.clear();
-            this.myGameArea.frameNo += 1;
-            if (this.myGameArea.frameNo == 1 || everyinterval(150)) {
-                x = this.myGameArea.canvas.width;
-                y = this.myGameArea.canvas.height - 45;
-                myObstacles.push(new component(10, 100, "green", x, y));
-            }
-            for (i = 0; i < myObstacles.length; i += 1) {
-                myObstacles[i].x += -0.5;
-                myObstacles[i].update();
-            }
-            // myGamePiece.newPos();
-            // myGamePiece.update(); */
-
-      // My Base Pieces
-      // var x, y;
-      // for (i = 0; i < this.myBasePieces.length; i += 1) {
-      //     if (myGamePiece.crashWith(this.myBasePieces[i])) {
-      //         console.log(`myGamePiece crashWith this.myBasePieces ${[i]}`)
-      //         this.myGameArea.stop();
-      //         // return;
-      //     }
-      // }
-      // // this.myGameArea.clear();
-      // this.myGameArea.frameNo += 1;
-      // if (this.myGameArea.frameNo == 1 || everyinterval(1050)) {
-      //     x = this.myGameArea.canvas.width - 100;
-      //     y = this.myGameArea.canvas.height - 50;
-      //     this.myBasePieces.push(new component(getRandomArbitrary(48, 50), getRandomArbitrary(50, 80), "skyblue", x, y));
-      // }
-      // for (i = 0; i < this.myBasePieces.length; i += 1) {
-      //     // control direction speed
-      //     this.myBasePieces[i].x += -0.3;
-      //     this.myBasePieces[i].update();
-      // }
       this.myGamePiece.newPos();
       this.myGamePiece.update();
 
@@ -849,32 +714,20 @@ export default {
 
       this.myStickPiece.newPos();
       this.myStickPiece.update();
-
-      // this.myScore.text = "SCORE: " + this.myGameArea.frameNo;
-      // // console.log('mygame area frame no.', this.myGameArea.frameNo, Math.floor(this.myGameArea.frameNo / 100))
-      // this.myScore.update();
     },
 
     // Add key to coltroll
     addKeyPress() {
+      console.log("key pressssssd");
+
       this.myGameArea.keys = this.myGameArea.keys || [];
       this.myGameArea.keys[39] = "keydown"; //(e.type == "keydown");
-      // this.myGameArea.keyReleased = false;
-      // Keyboard Even Listener
-      // window.addEventListener('keydown', function (e) {
-      //     that.myGameArea.keys = (that.myGameArea.keys || []);
-      //     that.myGameArea.keys[39] = (e.type == "keydown");
-      // })
     },
 
     keyReleased() {
       this.myGameArea.keys[39] = "keydown"; //(e.type == "keydown");
       this.myGameArea.keyReleased = true;
       this.myGameArea.keys = [];
-      // window.addEventListener('keyup', function (e) {
-      //     that.myGameArea.keys[39] = (e.type == "keydown");
-      //     that.myGameArea.keyReleased = true;
-      // })
     },
 
     // Reset Game
@@ -896,9 +749,6 @@ export default {
 
   mounted() {
     this.startGame();
-
-    setTimeout(() => {}, 3000);
-    console.log("stickImg", this.$refs.stickImg);
   },
 };
 </script>
@@ -913,25 +763,26 @@ canvas {
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/d7/Parallax_scroll.gif");
   /* background-image: url('https://s3.amazonaws.com/gameartpartnersimagehost/wp-content/uploads/edd/2015/08/Featured-Image5.png'); */
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: bottom;
   background-color: #ccffff;
   width: 100% !important;
   height: 100% !important;
-  max-width: 450px !important;
-  max-height: 550px !important;
+  /* max-width: 450px !important;
+  max-height: 550px !important; */
 }
 
 .score_wrapper {
   position: absolute;
-  top: 40%;
+  /* top: 40%; */
   left: 0;
   right: 0;
   margin: auto;
   width: 100%;
   font-size: 150px;
-  height: 100%;
+  /* height: 100%; */
   opacity: 0.4;
+  padding-top: 100px;
 }
 
 #app {
@@ -961,4 +812,18 @@ li {
 a {
   color: #42b983;
 }
+/*
+@media only screen and (min-width: 500px) {
+  canvas {
+    max-width: 450px !important;
+    max-height: 550px !important;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2) {
+  canvas {
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+} */
 </style>
