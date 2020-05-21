@@ -19,8 +19,11 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 
 
 t.ly/ZEAzE
-> t.ly/6xnNl
-> t.ly/9LyRZ
-> t.ly/j6bqJ
-> t.ly/P57qw
-> t.ly/ZEAqg
+ t.ly/6xnNl
+ t.ly/9LyRZ
+ t.ly/j6bqJ
+ t.ly/P57qw
+ t.ly/ZEAqg
+
+https://drive.google.com/drive/folders/1uWR6FuZ_Uil181TRFBxvCMJqwZ1w-675?usp=sharing
+
